@@ -3,7 +3,8 @@ import { MessageService } from 'src/app/services/module-msg/message.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { SocketService } from 'src/app/services/socket/socket.service';
- 
+import { LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-interface-initiale',
   templateUrl: './interface-initiale.page.html',
@@ -12,11 +13,19 @@ import { SocketService } from 'src/app/services/socket/socket.service';
 
 export class InterfaceInitialePage implements OnInit {
   base_url_file = environment.BASE_URL_file;
-  constructor(private socketService:SocketService,private router:Router,private messageService: MessageService) { }
+  constructor(private loadingCtrl: LoadingController,private socketService:SocketService,private router:Router,private messageService: MessageService) { }
   userId: any = 0;
   message: any = [];
   messageSearch:any=[];
-  ngOnInit() {
+  loading:any;
+  async ngOnInit() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      spinner: 'circles',
+   
+    });
+
+    await this.loading.present();
     this.socketService.onNewMessage().subscribe((data) => {
    
       if(data)
@@ -41,13 +50,15 @@ export class InterfaceInitialePage implements OnInit {
           {
             this.message = data;
             this.messageSearch=data;
+          
           }
+          this.loading.dismiss();
       
           this.scrollToBottom();
 
         },
         error => {
-
+          this.loading.dismiss();
         }
       );
 

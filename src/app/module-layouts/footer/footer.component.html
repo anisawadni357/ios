@@ -1,6 +1,6 @@
 <div class="footer mt-auto osahan-footer bg-white shadow" >
   <div class="d-flex align-items-center justify-content-between bottom-nav-main">
-      <a  class="col text-primary text-center" [routerLink]="'/'">
+      <a  class="col  text-center" (click)="actualise()" [routerLink]="'/'">
         <img src="/assets/icon/home.png">
       </a>
       <a  class="col text-muted text-center" [routerLink]="'/message'">
@@ -16,7 +16,7 @@
       <a  class="col text-muted text-center" [routerLink]="'/type-post'">
         <img src="/assets/icon/add.png">
       </a>
-      <a  class="col text-muted text-center">
+      <a  class="col text-muted text-center" [routerLink]="'/page-initiales-partenaires'">
         <img src="/assets/icon/shopping.png">
       </a>
       <a  class="col text-muted text-center" [routerLink]="'/page-initiale-profile'">

@@ -689,14 +689,13 @@ small {
 }
 
 .post-div-tr-initial {
-    bottom: 3%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    z-index: 555;
-    height: 40%;
-    opacity: 0.0;
-    background-color: red;
+    width: 90%;
+    z-index: 1;
+    height: 10%;
+    opacity: 0.4;
 }
 
 .post-div-tr {

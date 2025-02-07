@@ -79,8 +79,13 @@
                     </div>
                 </div>
             </ng-container>
-              <div class="position-absolute post-div-tr-initial" style=""  (touchstart)="startSwipe($event)"
+              <div class="position-absolute post-div-tr-initial" style="" *ngIf="swipedeclare"  (touchstart)="startSwipe($event)"
               (touchend)="endSwipe($event)">
+              <div class="bg-dark bg-opacity-20 d-flex justify-content-between align-items-center p-2 post-div-tr">
+                <a  class="text-white"><img src="/assets/images/coeur.png" style="width:20px" class="img-fluid"></a> 
+                <a  class="text-white"> <img src="/assets/assets/img/my-profile.jpg" alt="" class="img-fluid rounded-pill profile" style="width:20px"> Anis</a> 
+                <a  class="text-white"><img src="/assets/images/croix.png" class="img-fluid" style="width:20px"></a>
+            </div>
               </div>
           </div>
         

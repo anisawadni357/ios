@@ -11,7 +11,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-
+declare var $:any;
 register();
 @Component({
   selector: 'app-post',
@@ -71,22 +71,47 @@ showDislike: boolean = false;
     }, 1000);
   }
   triggerDsLikeAnimation() {
-    this.showDislike = true;
+  
     if(!this.post.dislikes==true)
       {
         this.dislikes();
       }
-    
+      $(document).ready(function() {
+        let width = $(".post-div-tr-initial").width();
+        let centerwidth = width / 2;
+        
+        let step = centerwidth; 
+        $(".post-div-tr-initial").css("opacity",'1');
+        let interval = setInterval(function() {
+            step+=5;
+            $(".post-div-tr-initial .post-div-tr").css("background", `linear-gradient(to right, transparent ${centerwidth}px, red ${step}px, transparent ${width}px)`);
+            
+            if (step >= width) {
+                clearInterval(interval);
+            }
+        }, 0.5); 
+    });
+    setTimeout(() => {
+      this.showDislike = true;
+    }, 100);
     setTimeout(() => {
       this.showDislike = false; 
-    }, 1000);
+    }, 3000);
+    setTimeout(() => {
+      $(".post-div-tr-initial").css("opacity",'0.4');
+    }, 4000);
   }
   ngAfterViewInit() {
 
 
 
 
-    
+   
+  
+  
+  
+  
+  
     if(this.route.snapshot.paramMap.get('id'))
     {
       this.swipedeclare=true;

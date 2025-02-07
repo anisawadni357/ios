@@ -141,6 +141,10 @@ const routes: Routes = [
     path: 'blockage',
     loadChildren: () => import('./module-profile/parametrage/blockage/blockage.module').then( m => m.BlockagePageModule)
   },
+  {
+    path: 'page-initiales-partenaires',
+    loadChildren: () => import('./module-partenaires/page-initiales-partenaires/page-initiales-partenaires.module').then( m => m.PageInitialesPartenairesPageModule)
+  },
   
   
 ];

@@ -28,11 +28,9 @@ export class FooterComponent  implements OnInit {
       if(sessionStorage.getItem('messageControl')=="1")
       {
         this.getNbMsg();
-        console.log("message controle ")
         sessionStorage.setItem('messageControl',"0")
       }else
       {
-        console.log("message controle 0")
         sessionStorage.setItem('messageControl',"0")
       }
     }else 
@@ -41,7 +39,6 @@ export class FooterComponent  implements OnInit {
     }
     this.addPostService.message$.subscribe(post => {
       if (post) {
-        console.log("je suis ici update message ")
         this.getNbMsg();
       }
     });
@@ -72,7 +69,6 @@ export class FooterComponent  implements OnInit {
        
         if(data)
         {
-          console.log("get nb msg",data)
             this.new_msg=data;
         }
       },
@@ -100,6 +96,13 @@ export class FooterComponent  implements OnInit {
     });
     toast.present();
   }
+  actualise() {
+    if (this.router.url === '/') {
+      location.reload();
+    }
+  }
+  
+  
 
 
 }
